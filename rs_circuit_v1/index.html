@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="fr" xmlns:ng="http://angularjs.org" id="ng:app" ng-app="myApp">
+
+	<head>
+		<meta http-equiv="Content-Type" 	content="text/html;charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" 				content="initial-scale=1.0, user-scalable=no" />
+        <meta property="og:image" 			content="http://localhost/images/legumes-fruits.jpg" />
+        <meta property="og:description" 	content="Your best weekly grocery deals / Vos spéciaux d'épicerie de la semaine." />
+       	<meta property="og:title" 			content="localhost / localhost" />
+       	<meta name="description" 			content="localhost  Recherchez les spéciaux et promotions d'épicerie des circulaires au Québec et Canada pour composer et imprimer votre liste d'épicerie de la semaine. Les coupons à imprimer. Search for local grocery flyer deals and specials in Canada to make and print grocery lists for weekly shopping. Print online coupons." />
+    	 <meta name="fragment" content="!">
+
+    	<link rel="icon" type="image/png" href="images/icoEarth.png">
+		 <!-- end script -->
+		<!-- Title -->
+		<title>Your best weekly grocery deals / Vos spéciaux d'épicerie de la semaine.</title>
+		<!-- Title -->
+
+		<!-- Ajouter par Nadia Tahiri le 17 Avril 2018 pour activer la direction de Google Map direction -->
+		<!-- <script src="https://maps.google.com/maps/api/js?v=3&key=AIzaSyCTKZvINFkyLssja6mwn14P5pdKA1wcCuk&libraries=placeses,visualization,drawing,geometry,places"></script> -->
+		<!-- Add comment by Nadia Tahiri 18 April 2018  -->
+		<!-- bugsnag -->
+		<!--  <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js" data-releasestage="Production" data-notifyreleasestages="Production"  data-apikey="c5ea7a71818ba1fcb9bcc7649372fceb"></script> -->
+		<!-- end bugsnag -->
+
+		<!-- Ajout par Nadia Tahiri 17 April 2018 à la suite d'une erreur console -->
+		<!-- <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_SVG"></script> -->
+
+
+		<!-- css -->
+
+		<link href="css/bootstrap.min.css" 			  rel="stylesheet">
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<!-- <link href="css/font-awesome.min.css" 		  rel="stylesheet">		-->
+		<link href="css/bootswatch.css" 			  rel="stylesheet">
+		<link href="css/style.css" 			  		  rel="stylesheet">
+		<link href="css/bootstrap-glyphicons.css"     rel="stylesheet">
+		<!-- Change to our server -->
+		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">	-->
+
+
+		<!-- end css -->
+		<script type="text/javascript">
+      if (!window.console) console = {log: function() {}};
+			console = console || {};
+			console.log = console.log || function () {};
+			var show_moneymaker = "yes";
+			if(navigator.appName.match(/Microsoft/i)){
+				show_moneymaker = "no";
+			}
+			var loc = window.location.href
+			if (loc.indexOf("#") != -1 &&  loc.indexOf("#!") == -1 ){
+				window.location.href = loc.replace("#", "#!");
+			}
+			var show_ad=false;
+			var local_pub_set = false;
+		</script>
+
+		<!--[if IE]>
+			<script type="text/javascript">var show_moneymaker = "no"; console.log("IE , show_moneymaker=" + show_moneymaker)</script>
+		<![endif]-->
+		<!--[if lte IE 9]>
+			<script type="text/javascript" src="js/optimization/es5-shim.min.js"></script>
+			<script type="text/javascript" src="js/html5shiv.js"></script>
+		<![endif]-->
+		<!--[if lte IE 8]>
+			<script type="text/javascript" src="js/json2.js"></script>
+			<script type="text/javascript">document.location='indexIE8.html';</script>
+		<![endif]-->
+		<!-- Note: reference jquery before angular! -->
+		<script type="text/javascript" src="js/jquery-1.9.0.js"></script>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<!-- test latest angularjs -->
+		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>	-->
+		<!-- <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script> -->
+
+
+		<script type="text/javascript" src="js/postscribe.js"></script>
+
+		<script  type="text/javascript">
+				//--http://stackoverflow.com/questions/11381673/javascript-solution-to-detect-mobile-browser
+				window.mobilecheck = function() {
+					var check = false;
+					(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
+					return check; }
+					//-- DO not redirect for now ... if (mobilecheck()) document.location='mobile.html';
+		</script>
+
+
+		<!--[if lte IE 9]>
+			 <script type="text/javascript" >
+			document.createElement('ng-include');
+			document.createElement('ng-pluralize');
+			document.createElement('ng-view');
+		    document.createElement('ng-form');
+			document.createElement('ng-switch');
+			document.createElement('ngrepeater');
+			document.createElement('multiselectenseignes');
+			document.createElement('multiselectcategories');
+			document.createElement('liste_franchise');
+			document.createElement('showonhover');
+			document.createElement('deals');
+			document.createElement('displayfiltre');
+			document.createElement('selectcategories');
+			document.createElement('selectenseignes');
+
+			// Optionally these for CSS
+			document.createElement('ng:include');
+			document.createElement('ng:pluralize');
+			document.createElement('ng:view');
+			document.createElement('ng:form');
+			// My directive
+
+		  </script>
+		   <script type="text/javascript" src="js/json2.js"></script>
+		   <script type="text/javascript">
+			'nav footer header ng-include'.replace(/\w+/g,function(n){document.createElement(n)});
+			</script>
+
+
+
+		<![endif]-->
+
+	<script>
+   		//////////////////////////////////////////////////////////
+		/// VARIABLES GLOBALES
+		var search_changed=true;         //--Pour la recherche (flag)
+		var promotions_changed=true;     //--Pour les promotions (flag)
+		var produit_changed=true;        //--Pour les produits (flag)
+		var promotion_codePostal='H3X3P3';     //--cached distance codepostal
+		var promotion_distance=0;		 //--cached distance promotion
+		var map=null;					 //--google map trajet
+		var minimap=null;				 //--google map franchise proche
+
+		var view_minimap=false;          //--Do we view/load the content the minimap
+		var lg_minimap='fr';             //--Langue...
+		var btn_minimap_adr='H3X3P3';    //-- Adresse for map button
+
+		var google_map_loaded=false;      //--Google map API loaded
+		var ie8=false;  				  //--IE8 (not supported for now)
+		var google_moneymaker_set=false;         //--Api for pub
+		var chikita_moneymaker_set=false;
+		var local_moneymaker_set=false;
+		var local_moneymaker_haut_set=false;
+		var moneymaker_google="";
+		var moneymaker_chikita="";
+		var moneymaker_local="";
+		var moneymaker_local_haut = ""; //new Array();
+
+		//////////////////////////////////////////////////////////
+		/// MAIN APPLICATION
+		<!-- Note: ng-route new angularjs -->
+		<!-- var myApp = angular.module('myApp',['ngRoute','LocalStorageModule','ui.bootstrap']); -->
+   		var myApp = angular.module('myApp',['LocalStorageModule','ui.bootstrap']);
+
+
+		<!--- See include for other directive, factory, etc. -->
+		<!-- all function moved to initialMap.js -->
+		//function loadMap() {
+			//dummy-> Need to find a way to get LatLong...
+		//	$("#loading_info").hide();
+		//}
+
+        function overlayBody(){
+			//--Put in controler?
+        	$("body").append('<div class="modalOverlay">');
+        }
+
+		function changeHeader(){
+			try {
+
+
+				//--same has mainCtrl.hideFastNearbyStores
+				view_minimap=false;
+				$('#moneymaker_top').show();
+				$('#link_message_info').hide();
+				$('#link_codepostal').hide();
+				$('#resize_btn').show();
+				$('#link_magasin_info').hide();
+				$('#over_map').css("height","40px",function(){});
+				$('#over_map').css("width","500px",function(){});
+				$('#map_canvas').css("width","500px", function() {});
+				$('#wrapper').hide();
+				$('#table_info').show();
+				//--end same
+				document.getElementById('ad_header_2').appendChild(document.getElementById('ad_header'));
+				document.getElementById("saut_de_ligne").style.display = "none";
+			} catch(e){}
+		}
+
+		//=======================================================
+		//= Conditions d'affichage et de suppression de la carte
+		//=======================================================
+		$(function(){
+			 //$(window).hashchange(function() {
+					// don't delete this empty handler or ie6/7 history won't work.
+				//});
+				// call hashchange on first load
+				//$(window).hashchange();
+
+			$('#link_magasin_info').hide();
+			$('#moneymaker_top').hide();
+			$('#table_info').hide();
+			$(".disabled-link").click(function(event) {
+				event.preventDefault();
+			});
+
+			$('#collapseOne_link').click(function(event){
+				$('#collapseOne').toggleClass("in");
+				console.log("collapseOne_link");
+			});
+
+			$('#search_header_bar').click(function(event) {
+ 				try {changeHeader();} catch(e){}
+			});
+
+			$('#nav_search').click(function(event) {
+ 				try {changeHeader();} catch(e){}
+			});
+			$('#view_map').click(function(event) {
+ 				try {
+					document.getElementById("mapHome").style.display = "block";
+					document.getElementById("saut_de_ligne").style.display = "block";
+					document.getElementById('ad_header_1').appendChild(document.getElementById('ad_header'));
+				} catch(e){}
+			});
+
+
+
+			$('#map_modal').on('shown', function () {
+					google.maps.event.trigger(minimap, "resize");
+					google.maps.event.trigger(minimap, "closeclick");
+			});
+
+    	 	$( "body" ).delegate("div.complete_desc","mouseover" , function(){
+				$("#"+this.id).attr("style","z-index:2;height:100%;min-height:43px !important");
+				// var top = 150-$("#"+this.id+"-2").height();
+				//$("#"+this.id+"-2").animate({ top: top + 'px' }, 'slow') ;
+
+    		});
+
+    	 	$( "body" ).delegate("div.complete_desc","mouseleave" , function(){
+    	 		$("#"+this.id).attr("style","z-index:1;height:43px;overflow:hidden");
+    	 		//$("#"+this.id+"-2").delay(500).animate({ top: 200 + 'px' }, 'slow');
+    	 	});
+
+    	 	$( "body" ).delegate("#show_villes","click" , function(){
+				//$("#villes").modal('show');
+				$("#villes").modal('show').css(
+        		{
+                    'margin-left': function () {
+                		return -($(this).width() / 2);
+            		}
+        		});
+
+    		});
+
+    	 	//$( "body" ).delegate("div.view_tips","click" , function(){
+    	 //		alert("lala");
+    	 	//});
+
+    	 	//setInterval(function(){ $('#loading_page').fadeOut("slow");},2000);
+
+
+
+		});
+
+
+		$(document).ready(function() {
+				var msie = /msie/.test(navigator.userAgent.toLowerCase());
+				if (msie) {
+					google_moneymaker_set=false;
+					angular.element(document).ready(function() {
+						 angular.bootstrap(document, ['LocalStorageModule', 'ui.bootstrap']);
+					   });
+				  }
+				//--Disable form submit
+				$('.noEnterSubmit').keypress(function(e){
+					if ( e.which == 13 ) return false;
+				});
+
+                if(document.URL.indexOf("mygrocerytour") != -1){
+                    $("#twitter").attr("data-text","Best weekly grocery deals are on MyGroceryTour.com");
+                    $("#twitter").attr("data-url","MyGroceryTour.com");
+                    $("#facebook").attr("data-href","http://www.MyGroceryTour.com");
+                    $("#collapseOne_link").text("Main features of MyGroceryTour");
+                    $("#features_fr").hide();
+                    $("#tips_fr").hide();
+                    $("#tips_title").html("<h4>8 Quick Tips to Save on Groceries</h4>");
+                }
+                else{
+                    $("#twitter").attr("data-text","Les meilleures aubaines de la semaine sont sur Circuitpromo.com");
+                    $("#twitter").attr("data-url","Circuitpromo.com");
+                    $("#facebook").attr("data-href","http://www.Circuitpromo.com");
+                    $("#collapseOne_link").text("Fonctionnalités principales de Circuitpromo");
+                    $("#features_en").hide();
+                    $("#tips_en").hide();
+                    $("#tips_title").html("<h4>8 Astuces pour Épargner sur vos Épiceries</h4>");
+                }
+                //--Change font size of search box text
+            	$("#search_box").focus(function() {  this.style.fontSize = "18px";this.style.fontColor="black"; });
+				$("#search_box").blur(function() { this.style.fontSize = ""; });
+
+		//		$('.dropdown-toggle').dropdown();
+
+  				// Fix input element click problem
+			  	$('.dropdown input, .dropdown label').click(function(e) {
+					e.stopPropagation();
+			 	});
+
+			 	$('#show_villes').click(function(){
+					$("#villes").modal('show');
+				});
+
+			});
+
+
+		$(document).click(function(event) {
+    		if(($(event.target).parents().index($('#dropdown_codepostal')) == -1&&$(event.target).parents().index($('#link_codepostal')) == -1) && ($(event.target).parents().index($('#form_postalCode')) == -1) ){
+       			if($('#form_postalCode').is(":visible")) {
+					 var scope = angular.element('div').scope();
+					 $( "#form_postalCode" ).hide('toggle');
+						$(".modalOverlay").remove();
+					 if (!scope.changePostalCode()) {
+						//Alert user...
+					 }
+					scope.$apply();
+        		}
+    		}
+		});
+    </script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	<!-- Pour ne pas que #reseau_sociaux passe à la ligne | 2020/04/13 brandon -->
+	<style type="text/css">
+		.navbar .nav {
+			margin-top: 0px;
+			margin-right: 0px;
+			margin-bottom: 0px;
+			margin-left: -1px;
+		}
+	</style>
+	<!-- Pour ne pas que #reseau_sociaux passe à la ligne | 2020/04/13 -->
+
+
+	</head>
+
+
+
+
+	<body ng-controller="MainCtrl" id="top" data-spy="scroll" data-target=".subnav" data-offset="80" ng-cloak>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) return;
+                 js = d.createElement(s); js.id = id;
+                 if(document.URL.indexOf("mygrocerytour") != -1)
+                    js.src = "//connect.facebook.net/en_CA/all.js#xfbml=1";
+                 else
+                    js.src = "//connect.facebook.net/fr_CA/all.js#xfbml=1";
+                 fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+	<div id='description_google' style='display:none'>
+		<p>
+			<h1>Your best weekly grocery deals.</h1><br>
+			<h2>Mission : </h2> MyGroceryTour.com presents on the web the best weekly deals and promotions offered by the major grocery stores throughout Canada. <br/>
+			<h2>Stores :</h2> Provigo, Metro, IGA, Uniprix, Jean Coutu, Metro, Pharmaprix, Maxi, Inter Marché, Brunet, Marché Richelieu, SuperC, Loblaws, Familiprix, Supermarché PA, Adonis<br/>
+			<h1>Vos spéciaux d'épicerie de la semaine.</h1><br>
+			<h2>Mission : </h2> Circuitpromo.com presente sur le web les meilleurs spéciaux de la semaine offert par les principales marchés d'alimentation du Canada.<br/>
+			<h2>Stores :</h2> Provigo, Metro, IGA, Uniprix, Jean Coutu, Metro, Pharmaprix, Maxi, Inter Marché, Brunet, Marché Richelieu, SuperC, Loblaws, Familiprix, Supermarché PA, Adonis<br/>
+                </p>
+	</div>
+	<div id='loading_info' class='loading_gmap shadowE' style='text-align:center'>
+			<span style='font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-weight: bold;font-size:20px;color: rgb(119, 119, 119);text-shadow: 0 1px 0 rgb(255, 255, 255);'>{{langue.titreSite}}
+			</span>&nbsp;&nbsp;<i class="icon-refresh icon-spin icon-large"></i>&nbsp;&nbsp;
+	</div>
+
+
+
+ 		<!-------------------------------------------------------------------------------->
+		<!--                                    ENTETE                                  -->
+		<!-------------------------------------------------------------------------------->
+ 		<div class="navbar navbar-fixed-top" style="position:fixed">
+   			<div class="navbar-inner" >
+     			<div class="container">
+
+						  <!-- <a href="index.html" tooltip-placement="bottom" tooltip-popup-delay='500' tooltip-html-unsafe="<div style='font-size:150%'>{{langue.urlSite}}</div>"><i class="icon-home"></i>&nbsp;{{langue.l_home}}</a> -->
+     				<div class="navbar-header" style='display:block'>
+						<a href="index.html" class="brand" tooltip-placement="right" tooltip-popup-delay='500' tooltip-html-unsafe="<div style='font-size:150%;'>{{langue.l_slogan}}</div>"><span style='font-size:20px;'>{{langue.titreSite}}</span></a>
+
+						<!-- Grocery -->
+						 <a class="brand btn hidden-desktop" href="" ng-click='go("/panier/{{panier[0]}}")' role="button" data-toggle="modal" tooltip-placement="bottom" tooltip-popup-delay='1000' tooltip-html-unsafe="{{langue.l_econo}} <div style='color:red;font-size:150%';><b>{{savingCurrentPanier()| currency}}</b></div>" ><span style='font-size:14px;'><i class="icon-check"></i>{{langue.l_list}} ({{totalquantity(panier)}} items ({{total(panier) |currency}})</span></a>
+
+						  <a href="" class="btn btn-navbar " data-toggle="collapse" data-target=".nav-collapse">
+							<span style='display:inline;color:#777;' tooltip-placement="left" tooltip='{{langue.l_options_btn}}'><i class="icon-cog"></i></span>
+						  </a>
+					</div>
+
+					<div class="nav-collapse collapse" id="main-menu" >
+						<ul class="nav nav-bar" >
+							<!-- Page d'acceuil id="main-menu-left"-->
+
+							<!-- Page d'aide
+							<li><a href="#help">{{langue.l_help}}</a></li>-->
+							<!-- Liste de courses  (&nbsp;{{totalquantity()}} items - {{total() |currency}}&nbsp;) -->
+							<li class="dropdown visible-desktop" id="preview-menu">
+            					<a class="dropdown-toggle nav nav-list" data-toggle="dropdown" href="" tooltip-placement="bottom" tooltip-popup-delay='1000' tooltip-html-unsafe="{{langue.l_econo}} <div style='color:red;font-size:150%';><b>{{savingCurrentPanier()| currency}}</b></div>" ><i class="icon-check"></i>{{langue.l_list}} <b class="caret"></b></a>
+
+								<ul class="dropdown-menu">
+								<li style='cursor:pointer;cursor:hand;' tooltip-popup-delay='500'  tooltip-html-unsafe="{{panier[0] | datelg:'dd MMM yyyy - hh:mm a'}}<br>{{langue.l_click_list}}" tooltip-placement="bottom"><a ng-click='go("/panier/{{panier[0]}}")'><div style='white-space:nowrap;'>{{langue.l_grocerylist}}</div></a></li>
+								<!-- <li ng-repeat="panier in listPanier() | limitTo:5" tooltip-popup-delay='500'  tooltip-html-unsafe="{{panier | datelg:'dd MMM yyyy - hh:mm a'}}<br>{{langue.l_click_list}}" tooltip-placement="bottom"><a href='#/panier/{{panier}}'><div style='white-space:nowrap;' ng-show="$index==0">{{langue.l_list}}</div><div ng-show='$index!=0' style='white-space:nowrap;display:inline;float: left;'><i class=' icon-briefcase'></i>{{$index+1}}</div> - {{totalquantity(panier)}} items ({{total(panier) |currency}})</a></li> -->
+								<!-- NO ARCHIVE FOR NOW <li ng-show='panier.length > 1'> <a ng-click="go('/panier')" style='cursor:pointer;cursor:hand;'><i class=' icon-briefcase'></i>&nbsp;{{langue.l_archive}} ({{panier.length-1}})</a></li> -->
+
+								<!-- <li ng-show='panier.length>1' style='text-align:center;'>ng-click="go('/panier')">{{langue.l_voir_liste}}&nbsp;({{listPanier().length-5}} {{langue.l_more}}&hellip;)</button></li> -->
+
+									<li class="divider"></li>
+									<li><button class='btn btn-primary'  style='margin:10px;' ng-click='newPanier()'>{{langue.l_effacer_liste}}</button></li>
+            					</ul>
+          					</li>
+
+							<!-- Trajet optimal -->
+							<!-- <li><a href="">{{langue.l_trajet}}</a></li> -->
+
+							<!-- Code postal et distance -->
+							<li class="dropdown"  id="dropdown_codepostal" >
+							<!-- <i style="color:red" class="icon-map-marker"></i>&nbsp; -->
+								<a style="cursor:hand;cursor:pointer;" ng-click="viewFormPostalCode();" tooltip='{{langue.l_Change_postalCode}}'><i style="color:green" class="icon-home"></i>&nbsp;{{postalCode | codepostal}} ({{distance}} km)</a>
+								<div class="dropdown-menu" style="width:350px;min-height:155px;padding:5px;background-color:white;" id="form_postalCode">
+									 <form style="width:340px;min-height:145px;padding:5px; margin-bottom: 0px;" accept-charset="UTF-8" class="well form-search noEnterSubmit" novalidate>
+										<button type="button" class="close" onclick='$("#invalide_codePostal").hide();$("#form_postalCode").hide();$(".modalOverlay").remove();' style="margin-right:-0px;margin-top:-5px;height:20px">&times;</button><br>
+										<div style="margin-left:5px;margin-right:5px;margin-bottom:5px;text-align:center;">
+											<div style="width: 330px;padding-bottom: 10px;" ng-bind-html-unsafe="langue.l_text_formulaire_code_postal"></div>
+											<input class="control-label" for="inputInfo" id="input_postalCode" onclick='$("#invalide_codePostal").hide();' ng-click='valid_code_and_distance=true' maxlength='7' style="font-size: 110%;text-transform: uppercase;font-weight:bold;text-align:center;margin-bottom:10px;width:100px" type="text" ng-model="ask_postalCode" placeholder="{{ask_postalCode}}" pattern="[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]" required/>
+											<input style="margin-bottom:10px;width:50px;color:black;" onclick='$("#invalide_distance").hide();' ng-click='valid_code_and_distance=true' id="input_distance" type="number" min=1 max=20 ng-model="ask_distance" placeholder="{{distance}}" required/>&nbsp;km
+
+											<div id="invalide_codePostal" class="alert alert-error" style='display:none'>
+												<button type="button" class="close" onclick='$("#invalide_codePostal").hide();' ng-click='valid_code_and_distance=true'>&times;</button>
+												{{langue.l_invalide_codePostal}} <strong>{{ask_postalCode | codepostal}}</strong> {{langue.l_invalide_codePostal2}}
+											 </div>
+											 <div id="invalide_distance" class="alert alert-error" style='display:none'>
+												<button type="button" class="close" onclick='$("#invalide_distance").hide();' ng-click='valid_code_and_distance=true'>&times;</button>
+												{{langue.l_invalide_distance}}
+											 </div>
+											<!-- <button class='btn btn-mini btn-primary' ng-click='findLocation()'><i class="icon-map-marker"></i></button> -->
+											<!-- <select ng-options="k as v for (k,v) in obj"></select> -->
+											<!-- <input style="visibility: hidden;align:right; height:25px; font-size: 13px;" type="submit" value="{{langue.l_updatePostalCodeButton}}">-->
+										   <button ng-show='!loading_map&&valid_code_and_distance' ng-click='changePostalCode()' class='btn btn-primary pull-right' style='margin-top:0px;margin-bottom:5px;'>{{langue.l_apply}}</button>
+										   <button ng-show='loading_map&&valid_code_and_distance' ng-click='changePostalCode()' class='btn btn-primary pull-right' style='margin-top:0px;margin-bottom:5px;'>{{langue.l_apply}}&nbsp;<i class="icon-refresh icon-spin"></i></button>
+
+										</div>
+									</form>
+
+								</div>
+							</li>
+
+							<!-- Afficher la carte -->
+							<!-- <li><a class="btn" href="#map_modal" role="button" data-toggle="modal" tooltip-placement="bottom" tooltip-popup-delay='500' tooltip-html-unsafe="<div style='font-size:150%'>{{langue.l_viewMapText}}</div>">Map</a></li> -->
+								<!-- <button class='btn btn-primary'>Map&nbsp;<img src='images/google_map_small.png'></img></button></li> -->
+							<li class="dropdown"  id="dropdown_map" >
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="images/google_map_small.png"></img>&nbsp;{{langue.l_map}}</a>
+								<ul class="dropdown-menu">
+									<!-- Update by Nadia Tahiri le 18 April 2018 Error in console log by removing # in href  -->
+									<li><a href="" ng-click='showNearbyStores()'>{{langue.l_show_stores}}</a></li>
+									<li><a href="#" ng-class="{'disabled-link':totalquantity()==0}" ng-click="go('/map');">{{langue.l_tour}}</a></li>
+								  </ul>
+
+							</li>
+
+						</ul>
+							<!-- Barre de recherche -->
+						<!-- <ul class="nav pull-right" id="main-menu-right">
+
+							<li class="dropdown" id="preview-menu">
+								<form class="navbar-search pull-left">
+									<input type="text" id="search_header_bar" ng-change="goToSearch()" ng-model="search" class="search-query" placeholder="{{langue.l_search}}&hellip;" style="width:350px;height:18px;background: url('images/gloupe.png') no-repeat #fff scroll 5px 5px;padding-left:30px;">
+								</form>
+							</li>
+						</ul> --> 
+
+						<!-- choix de la langue -->
+						<ul class="nav" id="main-menu-right">
+							<li class="dropdown" id="preview-menu">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#" ><i class="icon-globe"></i>&nbsp;{{langue.l_language}}</a>
+								<ul class="dropdown-menu">
+									<li><a href="" ng-click="update()">{{langue_otherChoice}}</a></li>
+								</ul>
+							</li>
+
+							<!-- added by nail -->
+							<li class="dropdown" id="preview-menu">
+								<a class="btn-o" id = 'login' data-toggle="btn" href = '' style='font-size:14px;'> {{langue.l_login}}</a>
+							</li>
+							<!-- fin added by nail -->
+
+							<!-- added by Achraf -->
+							<script type="text/javascript" src="../js/jquery-1.9.0.js"></script>
+							<script type="text/javascript">
+								var viderStorage = function () {
+									localStorage.setItem('taffy_Liste' , '[]');
+									localStorage.setItem('USER_CONNECTED', 'false');
+								}
+							</script>
+							<li ng-show = "is_connected" class="dropdown" ng-controler = "PanierCtrl" >
+								<a class="btn-o" href="/template/logout.php" class="btn" onclick="viderStorage()">{{langue.l_signout}}</a>
+							</li>
+							<!-- fin added by Achraf -->
+
+						</ul>
+					
+						<ul class='nav pull-right' style='margin-right:25px' id="reseaux_sociaux">
+
+							<li class="dropdown" style='margin-top: -5px'>
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src='images/newsletter.png' width='30px'></a>
+								<div class="dropdown-menu" id="dropdown_newsletter" style="height:200px">
+									<div class="row">
+										<div class="span4">
+											<div class="thumbnail center well well-small text-center" style="height:195px">
+												<h4>{{langue.l_newsletter_title}}</h4>
+												<p>{{langue.l_newsletter_subtitle}}</p>
+												<div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span>
+							https://www.cafr.ebay.ca/						<input type="text"  onclick='$(".newsletter_alert").hide();$("#newsletter_button").show()' ng-model="newsletter_email" name="" placeholder="{{langue.l_newsletter_email}}" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+												</div>
+												<!-- <div class="input-prepend"><span class="add-on"><i class="icon-globe"></i></span>
+													<input type="text" onclick='$(".newsletter_alert").hide();$("#newsletter_button").show()' ng-model="newsletter_pc" name="" placeholder="{{langue.l_newsletter_cp}}"  pattern="[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]" required>
+												</div> -->
+												<br />
+												<center><input id='newsletter_button' type="button" style='display:block' ng-click='add2Newsletter()' value="{{langue.l_newsletter_button}}" class="btn" /><center>
+												<div class="alert newsletter_alert" id="invalide_cp_newsletter" style='width:80%;display:none'>
+  													{{langue.l_invalide_codePostal}} <strong>{{newsletter_pc | codepostal}}</strong> {{langue.l_invalide_codePostal2}}
+												</div>
+												<div class="alert newsletter_alert" id="invalide_email_newsletter" style='width:80%;display:none'>
+  													{{langue.l_email_invalid}}
+												</div>
+												<div class="alert newsletter_alert" id="already_exist_newsletter" style='width:80%;display:none'>
+  													{{langue.l_already_exist_newsletter}}
+												</div>
+												<div class="alert alert-error newsletter_alert" id="internal_error_newsletter" style='width:80%;display:none'>
+  													{{langue.l_internal_error_newsletter}}
+												</div>
+												<div class="alert alert-success newsletter_alert" id="success_newsletter" style='width:80%;display:none'>
+  													{{langue.l_success_newsletter}}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li style='margin-top: 10px'>
+                                <div style='display:table-cell;vertical-align:top;'>
+
+									<a href="https://twitter.com/share" class="twitter-share-button" data-text="" data-via="MyGroceryTour" data-size="medium" data-url="" data-count="none" data-lang="en" id="twitter"></a>
+                                	<div style='vertical-align:top;' class="fb-share-button" data-href="http://www.Circuitpromo.com" data-type="button" id="facebook"></div>
+                                </div>
+                            </li>
+          					<!-- <li class="dropdown" style='margin-top: -11px;'>
+            					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-user"></i>&nbsp;{{langue.l_signin}}</a>
+            					<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="div_form_login">
+              						<form action="" method="post" accept-charset="UTF-8" class="noEnterSubmit" >
+  										<input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" placeholder="{{langue.l_email_placeholder}}" size="30" />
+  										<input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" placeholder="{{langue.l_password_placeholder}}"  size="30" />
+  										<input class="btn btn-primary" style="float: left; width: 40%; height: 32px; font-size: 14px;" type="submit" id="commit" name="commit" value="{{langue.l_signin}}" />
+  										<label for="commit" style="margin-top: 10px">&nbsp;&nbsp;<a style="cursor:hand;cursor:pointer;" ng-click="go('/login');">{{langue.l_signup}}</a></label>
+									</form>
+            					</div>
+          					</li>-->
+        				</ul>
+
+					</div>
+        		</div>
+   			</div>
+ 		</div>
+	</div>
+
+
+
+  <div class="container" style='padding-top:60px;'>
+   		<header class="jumbotron subhead visible-desktop" id="overview" style='margin-bottom: 4px;margin-top: -17px;'>
+
+							<!-- Map -->
+
+							<table id='table_info' style='display:none'>
+							<tr>
+							<td style='vertical-align: top;'>
+							<div id="wrapper">
+									<div class='map2 shadowE' style='display:block;cursor:hand;cursor:pointer;'>
+										<!-- <button id='resize_btn'  class='close' ng-click='showNearbyStores()' style='display:inline;text-shadow:none;color:white;opacity:0.95;font-size:90%;margin-top: -5px;margin-right: 0px;' ><i class="icon-resize-full"></i></button>						-->
+										<button class='btn btn-primary pull-right' style='margin-bottom:5px;' ng-click='hideFastNearbyStores()'>{{langue.l_close}}</button>
+										<button class='btn btn-primary pull-left' id='resize_btn' style='margin-bottom:5px;' ng-click='showNearbyStores()'>{{langue.l_full_size}}</button>
+
+										<div id="mapHome">
+											<div id="map_canvas"  style="width:600px;height:60px;"><span class="text-center" style="color: #222;text-shadow: 0px 2px 3px #555;font-size:18px;" ng-bind-html-unsafe="langue.l_loading_map"></span></div>
+										</div>
+									</div>
+									 <!-- <div id="over_map" style='color:grey;width:500px;height:60px;' ng-click='showMap()' tooltip-html-unsafe="{{langue.l_click_resize_map}}">										-->
+									 <div id="over_map"></div>
+									</div>
+							</div>
+							</td>
+
+							<td>
+								<div class='bubble me' id='link_codepostal' tooltip='{{langue.l_Change_postalCode}}' style='cursor:hand;cursor:pointer;'>{{langue.l_store_near}}&nbsp;<a ng-click='viewFormPostalCode();'><i style="color:green" class="icon-home"></i><b>&nbsp;{{postalCode | codepostal}}</b></a></div>
+								<!-- info site -->
+								<div class="bubble me" id='link_message_info'>
+										<p>
+										<span style='font-size:130%;font-weight:bold;'>&#9312;</span>
+										&nbsp;
+										<span ng-bind-html-unsafe="langue.l_message_info1"></span>
+										</p>
+										<p>
+										<span style='font-size:130%;font-weight:bold;'>&#9313;</span>
+										&nbsp;
+										<span ng-bind-html-unsafe="langue.l_message_info2"></span>
+										</p>
+								</div>
+								<!-- info magasin -->
+								<div class="bubble me" id='link_magasin_info'>
+								{{langue.l_aubaines2}}
+								{{window.list_enseigne_groups}}
+							<ul class="nav nav-list">
+									<!-- Commentaire by Nadia Tahiri 5 April 2018 -->
+									<!-- Donne la liste des enseigne à droite de la map de toutes les enseignes -->
+									<!-- <li ng-repeat="promo in promos | orderBy:'distanceFranchise'| limitTo:FranchiseLimit()"><a ng-click='setFilter(promo)' style='cursor:hand;cursor:pointer'><b>{{promo.nomFranchise}} (~{{promo.distanceFranchise}} km)</b></a></li> -->
+									<!-- Remplace {{promo.nomFranchise}} par {{promo.listeProduits[0].en}} -->
+									<li ng-repeat="promo in promos | orderBy:'distanceFranchise'| limitTo:FranchiseLimit()"><a ng-click='setFilter(promo)' style='cursor:hand;cursor:pointer'><b>{{promo.listeProduits[0].en}} (~{{promo.distanceFranchise}} km)</b></a></li>
+									<li ng-show='hasMoreFranchiseToShow()'><center><a ng-click='showMoreFranchise()' style='cursor:hand;cursor:pointer'>({{promos.length-FranchiseLimit()}} {{langue.l_more}})</a></center></li>
+								</ul>
+								</div>
+							</td>
+							<td align=center>
+
+							</td>
+							</tr>
+							</table>
+							<!-- ads top -->
+
+							<div id='moneymaker_top' class='row-fluid' style='display:block;'>
+								<div dynamic="moneymaker_haut"></div>
+								<script type="text/javascript">
+								if (show_moneymaker == "yes" ) {
+									//try {
+										//google_ad_client = "ca-pub-8792891939586872";
+										/* ad_header */
+										//google_ad_slot = "9816987380";   //= asynchrone : "5671053384"; 9816987380
+										//google_ad_width = 970;
+										//google_ad_height = 90;
+										//postscribe('#moneymaker_top','<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"><\/script>');
+									//} catch(e) {console.log(e);}
+								}
+								</script>
+							</div>
+							<div id="moneymaker_haut_" class='row-fluid' style='display:block;'></div>
+
+	<!-- end logo -->
+
+		</header>
+
+		<!-- sous menu de Navigation-->
+		<div class="subnav subnav2 search_filter" id="nav_search" style='max-width:1145px'>
+
+		 <ul class="nav nav-pills" style="margin-top: 5px;">
+
+			<li>
+				<div class="btn-group">
+								  <button class="btn btn-primary" style="color:white !important;margin-top:0px;margin-left:3px;" ng-click="go('/promo')" onclick="changeHeader()">{{langue.l_aubaines2}}</button>
+								  <button class="btn btn-primary dropdown-toggle" style="color:white !important;" data-toggle="dropdown" tooltip="{{langue.l_voir_Magasin}}">
+									<span class="caret" style='border-top-color: white; border-bottom-color: white;'></span>
+								  </button>
+								  <ul class="dropdown-menu">
+										<!-- Nadia Tahiri change information of list 15 april 2018 -->
+										<!-- Remplace {{promo.nomFranchise}} par {{promo.listeProduits[0].en}} -->
+									<li ng-repeat='promo in promos'><a href="" ng-click='setFilter(promo)'><b>{{promo.listeProduits[0].en}} </b>(~{{promo.distanceFranchise}} km)</a></li>
+								  </ul>
+				</div>
+
+
+
+			</li>
+			<li>
+				<div class="btn-group">
+					<button class="btn btn-primary" style="color:white !important;margin-top:0px;margin-left:3px;" ng-click="go('/categories');" onclick="changeHeader()">{{langue.l_voir_produits3}}</button>
+						<button class="btn btn-primary dropdown-toggle" style="color:white !important;" data-toggle="dropdown" tooltip="{{langue.l_voir_Categorie}}">
+						 <span class="caret" style='border-top-color: white; border-bottom-color: white;'></span>
+					   </button>
+					 <ul class="dropdown-menu">
+							<li ng-repeat="c in categories | orderBy:getOrderCategorie()">
+								<a href="" ng-click='setFilterCategorie(c)'><b>{{getNameCategorie(c)}}</b></a>
+							</li>
+					</ul>
+				</div>
+
+
+			</li>
+			<li>
+				<button class="btn btn-primary" style="color:white !important;margin-top:0px;margin-left:3px;" ng-click="go('/coupons2');" onclick="changeHeader()"><i class="icon-tags"></i>&nbsp;{{langue.l_voir_coupon}}</button>
+			</li>
+
+			<li class='pull-right search_li' style='padding-left: 5px;'>
+				<input id="search_box" type="text" ng-change="goToSearch()" ng-model="search_input" class="search noEnterSubmit" placeholder="{{langue.l_recherche_ex}}">
+				<button class="btn btn-primary" style="color:white;margin-top:-10px;margin-left:3px;margin-right:3px; !important;" ng-click="go('/produit')"  onclick="changeHeader()"><i class="icon-search"></i>&nbsp;{{langue.l_search}}</button>
+				<button class="btn btn-primary" style="color:white;margin-top:-10px;margin-left:3px;margin-right:3px; !important;" ng-click="go('/filtre')" tooltip="{{langue.l_filtre_res}}"><i class="icon-cog"></i></button>
+			</li>
+			</ul>
+			<!-- Filtres TO DO: directive EL -->
+			<ul class="nav nav-pills">
+			<li ng-show='filterFound()&&isProduit()'>
+					<span ng-show='search.length>0'>
+							<span><a  href="#" style='color:white'>&nbsp;{{langue.l_search}} </a></span>
+							<i><span class='badge badge-primary search_filter_badge'><i class="icon-search"></i>&nbsp;{{search}}&nbsp;<button tooltip='{{langue.l_removeFilter}}' style='background: transparent;border: none !important;padding:0px;color:white;' ng-click="removeSearch()"><i class="icon-li icon-remove-sign"></i></button></span></i>
+					</span>
+					<span ng-show='moneyFilter()!=""||selected_enseignes.length>0||selected_categories.length>0'><a  href="#" style='color:white'>&nbsp;{{langue.l_filtre}} </a></span>
+					<i>
+
+					<span ng-show='moneyFilter()!=""'>
+						<span class='badge badge-success search_filter_badge'>{{moneyFilter()}}&nbsp;<button tooltip='{{langue.l_removeFilter}}' style='background: transparent;border: none !important;padding:0px;color:white;' ng-click="removeMoneyFilter()"><i class="icon-li icon-remove-sign"></i></button></span>
+					</span>
+					<span ng-show='selected_enseignes.length<7'>
+						<span ng-show='isCheckedEnseigne(c)' class="badge badge-important search_filter_badge" ng-repeat="c in enseignes | orderBy: 'en'" >
+								<i class="icon-shopping-cart"></i>&nbsp;{{c.en}}&nbsp;<button tooltip='{{langue.l_removeFilter}}' style='background: transparent;border: none !important;padding:0px;color:white;' ng-click="toggleCheckedEnseigne(c)"><i class="icon-li icon-remove-sign"></i></button>&nbsp;
+						</span>
+					</span>
+					<span ng-show='selected_enseignes.length>=7&&selected_enseignes.length!=enseignes.length'>
+						<span class='badge badge-important search_filter_badge'><i class="icon-shopping-cart"></i>&nbsp;{{selected_enseignes.length}}&nbsp;shops...&nbsp;<button tooltip='{{langue.l_removeFilter}}' style='background: transparent;border: none !important;padding:0px;color:white;' ng-click="remoreAllEnseignes()"><i class="icon-li icon-remove-sign"></i></button></span>
+					</span>
+					<span ng-show='isCheckedCategorie(c)' class="badge badge-primary search_filter_badge" ng-repeat="c in categories | orderBy: getOrderCategorie()">
+							{{getNameCategorie(c)}}&nbsp;<button tooltip='{{langue.l_removeFilter}}' style='background: transparent;border: none !important;padding:0px;color:white;' ng-click="toggleCheckedCategorie(c)"><i class="icon-li icon-remove-sign"></i></button>&nbsp;
+					</span>
+					</i>
+					<span ng-show='filterFound()' class="badge badge-primary search_filter_badge" tooltip='{{langue.l_removeAllFilter}}'>
+					<span  style='color:white'>{{langue.l_removeAll}}</span>&nbsp;<button  style='background: transparent;border: none !important;padding:0px;color:white;' ng-click="removeAllFilter()"><i class="icon-li icon-remove-sign"></i></button>&nbsp;
+					</span>
+
+			</li>
+			</ul>
+		</div>
+
+
+  			<!-- end sous menu -->
+
+
+			<div id='loading_page' style='max-width:1145px'>
+				<BR><BR><div class="alert alert-success"><img src='images/engrena_006.gif'></img> {{langue.l_load_page}}</div>
+			</div>
+
+  			<!-- main view -->
+  			<div class="row" ng-cloak>
+  				<div ng-view ng-cloak></div>
+  			</div> <!-- end row -->
+
+      	 <!-- </div>end container -->
+		<br>
+		<br>
+
+		<!-- Popup here           -->
+		<div id ="popup_invalid_product" class="modal hide fade">
+		  <div class="modal-header">
+			<h3 ng-bind-html-unsafe="langue.l_important_info"></h3>
+		  </div>
+		  <div class="modal-body">
+			<p class="text-center" ng-bind-html-unsafe="langue.invalid_product"></p>
+			<p class="text-center">{{langue.wish_to}}</p>
+		  </div>
+		  <div class="modal-footer">
+			<button class="btn" ng-show="old_postalCode.length" ng-click="gobackProduct(old_postalCode)">{{langue.l_change_codePostal}}&nbsp;({{old_postalCode}})</button>
+			<button class="btn btn-primary" ng-click="newPanierModal()">{{langue.l_creer_nouvelle_list}}</button>
+		  </div>
+		</div>
+
+		<!-- End Popup here        -->
+
+
+		<div class="modal hide fade" id="villes" style="width:850px">
+  			<div class="modal-header">
+    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<h3>{{langue.l_select_city}}</h3>
+  			</div>
+  			<div class="modal-body">
+  				<div class="row">
+
+  					<!--  1ere colonne  -->
+  					<div class="span2">
+
+  						<h5><b>Alberta</b></h5>
+  						<table class="table table-striped">
+    						<tr><td><a href="#!/city/Calgary">Calgary</td></tr>
+    						<tr><td><a href="#!/city/Edmonton">Edmonton</td></tr>
+							<tr><td><a href="#!/city/Grande Prairie">Grande Prairie</td></tr>
+							<tr><td><a href="#!/city/Lethbridge">Lethbridge</td></tr>
+							<tr><td><a href="#!/city/Red Deer">Red Deer</td></tr>
+							<tr><td><a href="#!/city/St-Albert">St. Albert</td></tr>
+							<tr><td><a href="#!/city/Strathcona County">Strathcona County</td></tr>
+							<tr><td><a href="#!/city/Wood Buffalo">Wood Buffalo</td></tr>
+    					</table>
+
+    					<h5><b>British Columbia</b></h5>
+  						<table class="table table-striped">
+    						<tr><td><a href="#!/city/Abbotsford">Abbotsford</td></tr>
+    						<tr><td><a href="#!/city/Burnaby">Burnaby</td></tr>
+    						<tr><td><a href="#!/city/Chilliwack">Chilliwack</td></tr>
+    						<tr><td><a href="#!/city/Coquitlam">Coquitlam</td></tr>
+    						<tr><td><a href="#!/city/Delta">Delta</td></tr>
+							<tr><td><a href="#!/city/Kamloops">Kamloops</td></tr>
+							<tr><td><a href="#!/city/Kelowna">Kelowna</td></tr>
+							<tr><td><a href="#!/city/Langley">Langley</td></tr>
+							<tr><td><a href="#!/city/Maple Ridge">Maple Ridge</td></tr>
+    						<tr><td><a href="#!/city/Nanaimo">Nanaimo</td></tr>
+							<tr><td><a href="#!/city/New Westminster">New Westminster</td></tr>
+							<tr><td><a href="#!/city/North Vancouver">North Vancouver</td></tr>
+							<tr><td><a href="#!/city/Port Coquitlam">Port Coquitlam</td></tr>
+							<tr><td><a href="#!/city/Prince George">Prince George</td></tr>
+							<tr><td><a href="#!/city/Richmond">Richmond</td></tr>
+							<tr><td><a href="#!/city/Saanich">Saanich</td></tr>
+							<tr><td><a href="#!/city/Surrey">Surrey</td></tr>
+    						<tr><td><a href="#!/city/Vancouver">Vancouver</td></tr>
+							<tr><td><a href="#!/city/Victoria">Victoria</td></tr>
+    					</table>
+
+					</div>
+
+					<!--  2eme colonne  -->
+					<div class="span2">
+
+    					<h5><b>Manitoba</b></h5>
+  						<table class="table table-striped">
+    						<tr><td><a href="#!/city/Winnipeg">Winnipeg</td></tr>
+    					</table>
+
+    					<h5><b>Nova Scotia / Nouvelle Écosse</b></h5>
+  						<table class="table table-striped">
+  							<tr><td><a href="#!/city/Cape Breton">Cape Breton</td></tr>
+							<tr><td><a href="#!/city/Halifax">Halifax</td></tr>
+    					</table>
+
+    					<h5><b>New Brunswick / Nouveau Brunswick</b></h5>
+  						<table class="table table-striped">
+    						<tr><td><a href="#!/city/Fredericton">Fredericton</td></tr>
+    						<tr><td><a href="#!/city/Moncton">Moncton</td></tr>
+                            <tr><td><a href="#!/city/St-Johns_NB">Saint John's</td></tr>
+						</table>
+
+    					<h5><b>Newfoundland and Labrador</b></h5>
+  						<table class="table table-striped">
+    						<tr><td><a href="#!/city/St-Johns_NL">St-Johns</td></tr>
+    					</table>
+
+                        <h5><b>Ontario</b></h5>
+  						<table class="table table-striped">
+    						<tr><td><a href="#!/city/Ajax">Ajax</td></tr>
+    						<tr><td><a href="#!/city/Aurora">Aurora</td></tr>
+    						<tr><td><a href="#!/city/Barrie">Barrie</td></tr>
+    						<tr><td><a href="#!/city/Belleville">Belleville</td></tr>
+							<tr><td><a href="#!/city/Brampton">Brampton</td></tr>
+							<tr><td><a href="#!/city/Brantford">Brantford</td></tr>
+							<tr><td><a href="#!/city/Burlington">Burlington</td></tr>
+							<tr><td><a href="#!/city/Caledon">Caledon</td></tr>
+							<tr><td><a href="#!/city/Cambridge">Cambridge</td></tr>
+							<tr><td><a href="#!/city/Chatham-Kent">Chatham-Kent</td></tr>
+							<tr><td><a href="#!/city/Clarington">Clarington</td></tr>
+							<tr><td><a href="#!/city/Greater Sudbury">Greater Sudbury</td></tr>
+							<tr><td><a href="#!/city/Guelph">Guelph</td></tr>
+                        </table>
+					</div>
+
+					<!--  3eme colonne  -->
+					<div class="span2">
+						<table class="table table-striped">
+							<tr><td><a href="#!/city/Halton Hills">Halton Hills</td></tr>
+							<tr><td><a href="#!/city/Hamilton">Hamilton</td></tr>
+							<tr><td><a href="#!/city/Kawartha Lakes">Kawartha Lakes</td></tr>
+							<tr><td><a href="#!/city/Kingston">Kingston</td></tr>
+							<tr><td><a href="#!/city/Kitchener">Kitchener</td></tr>
+							<tr><td><a href="#!/city/London">London</td></tr>
+							<tr><td><a href="#!/city/Markham">Markham</td></tr>
+							<tr><td><a href="#!/city/Milton">Milton</td></tr>
+							<tr><td><a href="#!/city/Mississauga">Mississauga</td></tr>
+    						<tr><td><a href="#!/city/Newmarket">Newmarket</td></tr>
+    						<tr><td><a href="#!/city/Niagara Falls">Niagara Falls</td></tr>
+							<tr><td><a href="#!/city/Norfolk County">Norfolk County</td></tr>
+							<tr><td><a href="#!/city/North Bay">North Bay</td></tr>
+							<tr><td><a href="#!/city/Oakville">Oakville</td></tr>
+							<tr><td><a href="#!/city/Peterborough">Peterborough</td></tr>
+							<tr><td><a href="#!/city/Pickering">Pickering</td></tr>
+							<tr><td><a href="#!/city/Richmond Hill">Richmond Hill</td></tr>
+    						<tr><td><a href="#!/city/Sarnia">Sarnia</td></tr>
+    						<tr><td><a href="#!/city/Sault St- Marie">Sault St- Marie</td></tr>
+							<tr><td><a href="#!/city/St-Catharines">St-Catharines</td></tr>
+							<tr><td><a href="#!/city/Toronto">Toronto</td></tr>
+							<tr><td><a href="#!/city/Oshawa">Oshawa</td></tr>
+							<tr><td><a href="#!/city/Ottawa">Ottawa</td></tr>
+							<tr><td><a href="#!/city/Thunder Bay">Thunder Bay</td></tr>
+							<tr><td><a href="#!/city/Vaughan">Vaughan</td></tr>
+							<tr><td><a href="#!/city/Waterloo">Waterloo</td></tr>
+							<tr><td><a href="#!/city/Welland">Welland</td></tr>
+							<tr><td><a href="#!/city/Whitby">Whitby</td></tr>
+							<tr><td><a href="#!/city/Windsor">Windsor</td></tr>
+    					</table>
+
+					</div>
+
+					<!--  4eme colonne  -->
+					<div class="span2">
+						<h5><b>Québec</b></h5>
+  						<table class="table table-striped">
+    						<tr><td><a href="#!/city/Brossard">Brossard</td></tr>
+    						<tr><td><a href="#!/city/Dollard-des-Ormeaux">Dollard-des-Ormeaux</td></tr>
+							<tr><td><a href="#!/city/Drummondville">Drummondville</td></tr>
+							<tr><td><a href="#!/city/Gatineau">Gatineau</td></tr>
+							<tr><td><a href="#!/city/Granby">Granby</td></tr>
+							<tr><td><a href="#!/city/Laval">Laval</td></tr>
+							<tr><td><a href="#!/city/Longueuil">Longueuil</td></tr>
+							<tr><td><a href="#!/city/Lévis">Lévis</td></tr>
+							<tr><td><a href="#!/city/Montreal">Montreal</td></tr>
+							<tr><td><a href="#!/city/Quebec City">Québec</td></tr>
+							<tr><td><a href="#!/city/Repentigny">Repentigny</td></tr>
+							<tr><td><a href="#!/city/Saguenay">Saguenay</td></tr>
+							<tr><td><a href="#!/city/Saint-Hyacinthe">Saint-Hyacinthe</td></tr>
+							<tr><td><a href="#!/city/Saint-Jean-sur-Richelieu">Saint-Jean-sur-Richelieu</td></tr>
+							<tr><td><a href="#!/city/Saint-Jérôme">Saint-Jérôme</td></tr>
+							<tr><td><a href="#!/city/Shawinigan">Shawinigan</td></tr>
+							<tr><td><a href="#!/city/Sherbrooke">Sherbrooke</td></tr>
+							<tr><td><a href="#!/city/Terrebonne">Terrebonne</td></tr>
+							<tr><td><a href="#!/city/Trois-Rivières">Trois-Rivières</td></tr>
+    					</table>
+
+    					<h5><b>Saskatchewan</b></h5>
+  						<table class="table table-striped">
+  							<tr><td><a href="#!/city/Medicine Hat">Medicine Hat</td></tr>
+    						<tr><td><a href="#!/city/Regina">Regina</td></tr>
+    						<tr><td><a href="#!/city/Saskatoon">Saskatoon</td></tr>
+    					</table>
+
+					</div>
+				</div>
+  			</div>
+		</div>
+
+		<!-------------------------------------------------------------------------------->
+		<!--                             Dialog tips for save                           -->
+		<!-------------------------------------------------------------------------------->
+		<div id="modal_tips_for_save" class="modal hide fade">
+  			<div class="modal-header">
+   		 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<div id="tips_title"><h3>8 Quick Tips to Save on Groceries</h3></div>
+  			</div>
+  			<div class="modal-body">
+    			<div id="tips_en">
+    			<ol>
+    				<li>
+    					<font color="blue"><b>
+    					Make a weekly grocery list and stick to it
+    					</b></font>
+    					<br><br>According to researchers of the University of Pennsylvania, people who avoid impulse spending can save up to 23% on their grocery bills. Making a grocery list and sticking to it is the best way to shop.
+						<br><br><b>Potential Annual Savings: $2,650*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Stockpile groceries when they are on sale
+    					</b></font>
+    					<br><br>Save almost 25% on the annual cost of your groceries by stockpiling groceries when they are on sale and then skip a grocery shop once a month. If you cannot do this monthly, then try for once every three months. It will still save you a lot of money. You can stockpile all kinds of non-perishable food, and you can freeze bread and meat when you find them on sale.
+						<br><br><b>Potential Annual Savings: $2,160*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Price matching
+    					</b></font>
+    					<br><br>
+    					You can save at least 10% by shopping at a grocery store that price matches its competitors. Make sure you bring the competitors flyers with you to take advantage of this policy. For a family of four, this tip can save $1,150 per year. Wal-Mart stores that now sell groceries are great places to do this, as well as the Real Canadian SuperStore, Maxi and Tiger Direct which will also price match. Some other grocery stores may also match competitors' prices. Speak with a manager of your favourite grocery store to see if they will price match competitors' advertised prices.
+    					<br><br><b>
+						Potential Annual Savings: $1,150*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Use manufacturers' coupons
+    					</b></font>
+    					<br><br>
+    					You can save around 10% on your groceries by requesting coupons from the manufacturers whose products you normally buy. Email them and ask them to send you the coupons of your interest. Some people do this once or twice every month—whenever they know they will need more coupons—and they manage to get coupons for almost everything they buy.
+    					<br><br><b>
+						Potential Annual Savings: $970*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Buy more fruits and vegetables
+    					</b></font>
+    					<br><br>
+    					You can shrink your grocery budget by up to 25% and trim your waistline at the same time by adding more fruits and vegetables to your snacks and meals. A research conducted by the American Dietetic Association shows that every member of your family can benefit from this strategy and thus lose weight. Your budget can also breathe easier if you introduce more fresh products into your family’s diet.
+    					<br><br><b>
+						Potential Annual Savings: $720*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Choose generic brands over name brands
+    					</b></font>
+    					<br><br>
+    					You can save 25% on your groceries if you buy generic brand groceries instead of name brands. Sometimes generic brands don't taste as good as brand names, but you can work this around. For instance, real Cheerios taste better than generic ones, but if you’re buying for a toddler, they probably won’t care. When it comes to staples like sugar, salt, flour, bleach and many other items, for most people there is no discernible difference in quality—only in the price. You might not want to completely ignore brand name groceries—especially when they go on sale—however, if you can substitute generic or no name brands for brand names, you will begin to experience some real savings.
+    					<br><br><b>
+						Potential Annual Savings: $720*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Shop at discount grocery stores
+    					</b></font>
+    					<br><br>
+    					You can save at least 10% on your groceries if you shop at a discount grocery store like the Real Canadian SuperStore. For instance, you can save a lot on your fruits and vegetables by shopping at a discount produce store or at a farmer’s market. Not all farmer markets will save you money, but some will.
+    					<br><br><b>
+						Potential Annual Savings: $1,150*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Shop with cash
+    					</b></font>
+    					<br><br>
+    					You can save 12% to 18% if you leave your credit cards at home and shop with cash. According to a study by Dunn & Bradstreet, people who shop with a credit card pay 12% to 18% percent more than those who shop with cash. McDonalds has also confirmed that when people buy their food with a credit card instead of cash the average transaction jumps from $4.50 to $7. If you only shop with cash or your debit card, then you can only spend what you have. Shopping with $50 in your pocket can be much different than shopping with a $10,000 credit limit in your pocket. If you really want to use your credit card to collect points, then make sure you stick to your grocery list and you still may come out ahead.
+    					<br><br><b>
+						Potential Annual Savings: $1,390 - $2,080
+						</b>
+						<br/><br/><br/>
+    				</li>
+    			</ol>
+    			<font color="blue"><b>What does it change in your life?</b></font>
+    			<br/><br/>
+    			<p>
+    				Combine these money saving tips and ideas and you can significantly reduce your grocery budget.
+    				Some people find saving money fun, and some find it to be a necessity.
+    				If you can apply only a couple of these tips and save 20% a year, that could save you $2,300 if you feed a family of four.
+    				Is $2,300 worth the effort? That could pay for your next holiday.
+					<br/><i>* Saving estimates are based on numbers from Statistics Canada.
+					The estimates indicated here, computed by MyMoneyCoach, show how much a family of four could potentially save from implementing each strategy.
+    				</i><br/>
+    			</p>
+    			</div>
+    			<div id="tips_fr">
+    			<ol>
+    				<li>
+    					<font color="blue"><b>
+    					Faire sa liste d'épicerie et s'y tenir
+    					</b></font>
+    					<br><br>
+    					Selon une étude faite à l'Université de Pennsylvanie, les gens qui évitent les achats impulsifs peuvent économiser jusqu'à 23% sur leur facture d'épicerie. Faire une liste d'épicerie et de s'y tenir est la meilleure façon de magasiner.
+    					<br><br><b>
+    					Économies annuelles potentielles: $ 2650*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Stockez vos spéciaux et sautez une course d'épicerie
+    					</b></font>
+    					<br><br>
+    					Économisez près de 25% du coût annuel de votre épicerie en stockant les produits quand ils sont en promotion, puis sautez une course d'épicerie une fois par mois. Si vous ne parvenez pas à le faire une fois par mois, essayez de le faire une fois tous les trois mois. Cette stratégie vous épargnera toujours beaucoup d'argent. Vous pouvez stocker toute sorte de produits non périssables, et congeler le pain et la viande quand ils sont en spécial.
+    					<br><br><b>
+    					Économies annuelles potentielles: $ 2160*
+    					</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Égalisation des prix
+    					</b></font>
+    					<br><br>
+    					Vous pouvez économiser au moins 10% sur vos épiceries en magasinant dans les magasins qui égalent les prix des concurrents. Assurez-vous d'apporter les circulaires des magasins concurrents si vous voulez profiter de cette offre. Pour une famille de quatre, cette astuce permet d'économiser environ $ 1150 par an. Les magasins Wal-Mart qui vendent maintenant des épiceries égalent les prix des concurrents, de même que Real Canadian Superstore, Maxi et Tiger Direct. Certaines autres épiceries peuvent aussi égaler les prix de leurs concurrents. Parlez au responsable de votre magasin d'épicerie préféré pour savoir si la politique d'égalisation des prix y est en vigueur.
+    					<br><br><b>
+						Économies annuelles potentielles: $ 1150*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Utilisez les coupons des manufacturiers
+    					</b></font>
+    					<br><br>
+    					Vous pouvez économiser environ 10% sur vos courses d'épicerie en demandant les coupons de tous les producteurs dont les produits vous achetez. Contactez les par courriel et demander les de vous envoyer les coupons qu'ils pourraient avoir. Plusieurs consommateurs le font une ou deux fois par mois - quand ils savent qu'ils ont besoin de plus de coupons - et ils sont en mesure d'obtenir des coupons pour presque tout ce qu'ils achètent.
+    					<br><br><b>
+						Économies annuelles potentielles: $ 970*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Manger plus de fruits et de légumes
+    					</b></font>
+    					<br><br>
+    					Vous pouvez réduire votre budget d'épicerie jusqu'à 25% et diminuer en même temps votre tour de taille en ajoutant plus de fruits et de légumes à vos collations et vos repas. La recherche menée par l'Association américaine de diététique montre que chaque membre de votre famille pourrait en bénéficier et ainsi perdre du poids. Votre budget pourrait également en profiter si vous introduisez plus de produits frais dans votre alimentation quotidienne.
+    					<br><br><b>
+						Économies annuelles potentielles: $ 720*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Achetez des produits de marques génériques au lieu des produits de marques reconnues
+    					</b></font>
+    					<br><br>
+    					Vous pouvez épargner 25% sur vos épiceries si vous achetez des articles de marques génériques à la place des articles de marques reconnues. Parfois les produits génériques ne goûtent pas aussi bon que les produits de marque, mais vous pouvez le contourner. Par exemple, les vrais Cheerios ont un meilleur goût que les Cheerios génériques, mais si vous les achetez pour des petits enfants, cela ne les dérangera probablement beaucoup. Quand il s'agit de produits de base comme le sucre, le sel, la farine, l'eau de Javel et de nombreux autres articles, pour la plupart des gens il n'y a pas de différence perceptible dans la qualité — mais seulement dans le prix. Vous pourriez ne pas vouloir ignorer complètement les produits de marque — ils peuvent aussi être en promotion — mais si vous les remplacez par les produits génériques, vous commencerez à faire des réelles économies.
+    					<br><br><b>
+						Économies annuelles potentielles: $ 720*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Faites vos courses dans des magasins d'escompte
+    					</b></font>
+    					<br><br>
+    					Vous pouvez économiser au moins 10% sur vos courses d'épicerie si vous les faites dans des magasins d'escompte comme Super C ou Maxi. Par exemple, vous pouvez économiser beaucoup sur vos fruits et légumes en faisant des courses dans un magasin d'escompte ou dans un marché fermier. Pas tous les marchés fermiers vous feront économiser beaucoup, mais certains le feront bien.
+    					<br><br><b>
+						Économies annuelles potentielles: $ 1150*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    				<li>
+    					<font color="blue"><b>
+    					Payez comptant
+    					</b></font>
+    					<br><br>
+    					Vous pouvez épargner 12% à 18% si vous laissez votre carte de crédit chez vous et faites vos courses avec de l'argent comptant. Selon une étude réalisée par Dun & Bradstreet, les gens qui payent leurs courses avec une carte de crédit payent 12% à 18% de plus que ceux qui font leurs achats avec de l'argent comptant. McDonalds a également confirmé que lorsque les gens achètent leur repas avec une carte de crédit à la place de l'argent comptant, la transaction moyenne passe de 4,50 $ à 7 $. Si vous magasinez seulement avec de l'argent comptant ou avec votre carte de débit, vous ne pouvez alors dépenser que ce que vous avez réellement. Le shopping avec 50 $ en poche est très différent de celui avec une limite de crédit de 10.000 $. Si vous voulez vraiment utiliser votre carte de crédit pour accumuler des points, assurez-vous que vous faites vos achats conforment à votre liste d'épicerie.
+    					<br><br><b>
+						Économies annuelles potentielles: $ 1390 - 2080*
+						</b>
+						<br/><br/><br/>
+    				</li>
+    			</ol>
+    			<font color="blue"><b>Ce que ça signifie pour moi ?</b></font>
+    			<br/><br/>
+    			<p>
+    				Combinez le plus possible ces astuces d'épargne et vous pouvez réduire très considérablement votre budget d'épicerie.
+    				Certaines personnes trouvent qu'économiser de l'argent c'est amusent, mais pour les autres c'est une nécessité.
+    				Si vous suivez seulement certains de ces conseils et économisez 20% sur vos courses d'épicerie, ceci vous fera économiser $ 2300 par an pour une famille de quatre; $ 2300, vaut-il la peine ?
+    				Cela vous payera peut-être vos prochaines vacances.
+    				<br/><i>*Les économies présentées ici sont basées sur les rapports de Statistique Canada.
+    				Les chiffres indiqués, calculées par MyMoneyCoach, montrent à quel point une famille de quatre personnes pourrait profiter de chacune des stratégies présentées.
+    				</i><br/>
+
+    			</p>
+    			</div>
+  			</div>
+ 			<div class="modal-footer">
+    			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  			</div>
+		</div>
+
+		<!-------------------------------------------------------------------------------->
+		<!--                          Fonctionnalités du site Web                       -->
+		<!-------------------------------------------------------------------------------->
+		<div class="accordion" id="fonctionnalites" style='max-width:1145px'>
+  			<div class="accordion-group">
+    			<div class="accordion-heading " style="background-color: #f5f5f5;">
+      				<a class="accordion-toggle" data-toggle="collapse" data-parent="#fonctionnalites" href="" id="collapseOne_link">Main features of localhost | Fonctionnalités principales de localhost</a>
+    			</div>
+    			<div id="collapseOne" class="accordion-body collapse">
+      				<div class="accordion-inner" style='background-color:#E0E0E0;font-size:14px'>
+      					<div id="features_en" >
+							<ol>
+								<li>
+									Search for and compare advertised grocery deals from your the favourite local grocery stores.
+								</li>
+								<li>
+									Create and print a complete shopping list in just a few clicks.
+								</li>
+								<li>
+									Display a map of your local grocery stores.
+								</li>
+								<li>
+									Print your favourite Canadian coupons.
+								</li>
+								<li>
+									Display the optimal shopping path based on your weekly shopping list.
+								</li>
+								<li>
+									Coming soon:
+									<ul>
+										<li>Receive email alerts when your favourite articles go on sale.</li>
+										<li>Display the products nutrition information.</li>
+										<li>Save and manage your shopping lists.</li>
+									</ul>
+								</li>
+							</ol>
+						</div>
+						<div id="features_fr">
+							<ol>
+								<li>
+									Recherchez les meilleurs spéciaux d'épicerie de la semaine dans les magasins de votre quartier.
+								</li>
+								<li>
+									Composez et imprimez votre liste d'achats personnalisée en quelques clics seulement.
+								</li>
+								<li>
+									Affichez la carte des magasins d'épicerie les plus proches de chez vous.
+								</li>
+								<li>
+									Imprimez les coupons canadiens de votre choix.
+								</li>
+								<li>
+									Affichez votre parcours d'achats optimal.
+								</li>
+								<li>
+									À venir:
+									<ul>
+										<li>Recevez des alertes quand vos articles préférés seront en promotion.</li>
+										<li>Affichez l'information nutritive des produits.</li>
+										<li>Sauvegardez et gérer vos listes d'achats.</li>
+								</li>
+							</ol>
+						</div>
+      				</div>
+    			</div>
+  			</div>
+  		</div>
+
+
+		<!-------------------------------------------------------------------------------->
+		<!--                                PUB du bas                                  -->
+		<!-------------------------------------------------------------------------------->
+		<div id="moneymaker_bottom"></div>
+
+
+
+		<!-------------------------------------------------------------------------------->
+		<!--                                    FOOTER                                  -->
+		<!-------------------------------------------------------------------------------->
+      	<hr style='max-width:1145px'>
+
+      	<footer id="footer" style='max-width:1145px'>
+        <p><ul  class="breadcrumb" style='padding-left: 0;list-style: none;'>
+            <!-- <li class="pull-right"><a href="#top"    style='cursor:pointer;cursor:hand;'>{{langue.l_back_top}}</a></li> -->
+			 <li class="pull-right"><a ng-click="go('/contact');" style='cursor:pointer;cursor:hand;'>{{langue.l_contact}}</a></li>
+            <li><a  ng-click="gocr('/advertise');"   style='cursor:pointer;cursor:hand;'>{{langue.l_foot_annoncez}}</a><span class="divider">|</span></li>
+			<li><a  ng-click="gocr('/partner');"     style='cursor:pointer;cursor:hand;'>{{langue.l_foot_partenaire}}</a><span class="divider">|</span></li>
+			<li><a  ng-click="gocr('/terms');"       style='cursor:pointer;cursor:hand;'>{{langue.l_foot_conditions}}</a><span class="divider">|</span></li>
+			<li><a  ng-click="gocr('/privacy');"     style='cursor:pointer;cursor:hand;'>{{langue.l_foot_vie_prive}}</a></li>
+            </ul></p>
+			<!-- Notice -->
+			<p>
+				* {{langue.l_notice_approximatif}} ** {{langue.l_notice_disponibilite}}	*** <span ng-bind-html-unsafe="langue.l_notice_pasquier"></span>
+			</p>
+			<p>&copy; {{langue.titreSite}} 2018 </p>
+
+			<!-- <p><a ng-click='tm()'><i class="icon-mobile-phone" ></i></a>{{link}}<a ng-show="link!=''" href="{{link}}">link</a></p> -->
+        	<p style='font-size:60%' ng-bind-html-unsafe="langue.l_site_info"></p>
+
+      	</footer>
+
+	<!-- Load the correct googlemap api in the mainCtrl->handleUser  -->
+		<script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="js/angular-resource.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/ui-bootstrap-0.3.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.smooth-scroll.min.js"></script>
+		<script type="text/javascript" src="js/bootswatch.js"></script>
+		<script type="text/javascript" src="js/localStorageModule.js"></script>
+		<script type="text/javascript" src="js/date.format.js"></script>
+		<script type="text/javascript" src="js/purl.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
+		<!--Note: function getLatLong in below -->
+		<script type="text/javascript" src="js/initialMap.js"></script>
+
+		<script type="text/javascript" src="js/taffy-min.js"></script>
+
+		 <script type="text/javascript" src="js/pubs/htmlParser.js"></script>
+
+		 <!-- chart for product below -->
+		 <script type="text/javascript" src="js/highcharts.js"></script>
+
+		<script type="text/javascript">
+		if (show_moneymaker == "yes" ) {
+			//try {
+				//google_ad_client = "ca-pub-8792891939586872";
+				/* ad_foot */
+				//google_ad_slot = "4660055787";
+				//google_ad_width = 970;
+				//google_ad_height = 90;
+				//postscribe('#moneymaker_bottom','<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"><\/script>');
+			//} catch(e) {console.log(e);}
+		}
+		</script>
+
+		<script type="text/javascript"> var random = Math.floor((Math.random()*100)+1);</script>
+		<script type="text/javascript" src="js/controler/panierCtrl.js"></script>
+		<script type="text/javascript" src="js/controler/loginCtrl.js"></script>
+		<script type="text/javascript" src="js/controler/produitCtrl.js"></script>
+		<!-- Update by Nadia Tahiri 2014 to 2018 -->
+		<!-- <script type="text/javascript" src="js/controler/mainCtrl.js?v=2014"></script> -->
+		<script type="text/javascript" src="js/controler/mainCtrl.js?v=2018"></script>
+		<script type="text/javascript" src="js/controler/emailCtrl.js"></script>
+		<script type="text/javascript" src="js/controler/changeLgCtrl.js"></script>
+		<script type="text/javascript" src="js/controler/mapCtrl.js"></script>
+		<script type="text/javascript" src="js/controler/corporateCtrl.js"></script>
+		<script type="text/javascript" src="js/route/routeProvider.js"></script>
+		<script type="text/javascript" src="js/factory/factory.js"></script>
+		<script type="text/javascript" src="js/filter/search.js"></script>
+		<script type="text/javascript" src="js/filter/search_coupons.js"></script>
+		<script type="text/javascript" src="js/filter/search_otherenseignes.js"></script>
+		<script type="text/javascript" src="js/filter/codepostal.js"></script>
+		<script type="text/javascript" src="js/filter/truncate.js"></script>
+		<script type="text/javascript" src="js/filter/currency.js"></script>
+		<script type="text/javascript" src="js/filter/date.js"></script>
+		<script type="text/javascript" src="js/directive/directive.js"></script>
+		<script type="text/javascript" src="js/directive/chartDirective.js"></script>
+		<script>
+    		if (local_moneymaker_set) {
+				displayMoneymaker(0);
+			}
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			  ga('create', 'UA-45940418-1', 'localhost');
+			  ga('send', 'pageview');
+		</script>
+
+		<script>
+		// added by nail
+
+
+		$(window).bind("load", function() {			
+			$lang = localStorage.getItem("USER_LANGUE");
+			jQuery.getJSON("session.php", function(data) {
+				var session_arr = [data.connected, data.email]
+				localStorage.setItem("USER_CONNECTED", session_arr[0]);
+
+				if ($lang == '\"en\"'){
+					if (session_arr[0] == false){
+						//document.getElementById("login").innerHTML = 'Login';
+						document.getElementById("login").href = "template/login.php";
+					}
+					else{
+						document.getElementById("login").innerHTML = session_arr[1];
+						document.getElementById("login").href = "template/profile.php";
+					}
+				}
+				if ($lang == '\"fr\"'){
+					if (session_arr[0] == false){
+						//document.getElementById("login").innerHTML = 'Connexion';
+						document.getElementById("login").href = "template/fr/login.php";
+				}
+					else{
+						document.getElementById("login").innerHTML = session_arr[1];
+						document.getElementById("login").href = "template/profile.php";
+					}
+				}
+			});				    	
+		});
+		</script>
+
+	</body> 
+</html>

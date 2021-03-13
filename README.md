@@ -1,2 +1,2 @@
 # RS-Circuitpromo
-Recommendation system for the website circuitpromo.uqam.ca and other tools. The code in this repository is often being updated.
+Recommendation system for the website circuitpromo.uqam.ca and other tools. The code in this repository is often being updated. The v2 is making use of SMOTE, it is currently being worked on to address an issue that sometimes happen when there is an insufficient amount of example samples for one class even with the n_neighbors parameter set to the minimum value (n_sample < n_neigbors).
