@@ -1,0 +1,198 @@
+	   <!--Panier content-->
+		<div class="span9" ng-controller='ProduitCtrl' ng-cloak>
+			<div class="panel shadowE" ng-controller='PanierCtrl'>	
+				<div class="panel-heading" style="margin: -15px -15px 5px !important;background-color:white;">
+					 <h3 class="panel-title"> 				  
+							  <table width='100%'>
+							  <tr>
+							  <td>
+							  <i ng-show='id_panier!=current_panier' class=' icon-briefcase'></i><i ng-show='id_panier==current_panier' class='icon-check'></i>&nbsp;<b>{{getTitle(id_panier)}}</b>
+							</td>
+							<td>		
+							  <button ng-show="id_panier==current_panier" class='btn btn-primary pull-right' ng-click='print_panier()'><i class='icon-print icon-white'></i>&nbsp;{{langue.l_print}}</button>			  
+							  </td>
+							 </tr> 
+							</table>
+				  </h3>
+					
+						
+						<div style='text-align:left;font-size:100%;margin-top:5px;font-weight:bold;'><span ng-show='id_panier==current_panier'>{{langue.l_montant_total}}&nbsp;{{totalquantity(id_panier)}}<span ng-show='totalquantity(id_panier)>0'>&nbsp;{{langue.l_product|lowercase}}&nbsp;{{langue.l_for2}}&nbsp;<s>{{totalSansSpecial()|currency}}</s>&nbsp;<span style='font-size:130%'>{{total() |currency}}</span></span></span> 
+						<br>
+						</div>
+						<div class='pull-right' style='margin-top: -20px;'><span  style='font-size:normal'> {{langue.l_triPar}}&nbsp;</span><span style='display:inline;' ng-include src="'template/selecttripar2.html'"></span></div>																	  
+				</div>
+				<!-- class="table table-bordered table-striped table-hover table-condensed" -->
+				<table class='table table-condensed'>  	  		
+				<tbody>
+				   <!-- Panier vide -->
+					<!-- <tr ng-show='totalquantity(id_panier)==0&&current_panier==id_panier'> to handle non existant product -->
+				   <tr ng-show='totalquantity(id_panier)==0&&current_panier==id_panier'>
+					  <td style='text-align:center;background-color: rgb(255, 248, 220);'>
+						<br>
+						<span ng-bind-html-unsafe="langue.l_liste_vide"></span>
+						<br>
+					  </td>
+					  </tr>
+
+
+				  <tr ng-show='produit.x!=""' ng-repeat="produit in panier_items | filter:searchText| orderBy:getTriParam()">
+
+						<td style='width:80px;'>
+							<div style='float:right;display:inline;/*text-align: center;vertical-align: middle;line-height: 90px;*/'>
+
+							<button ng-show='id_panier==1111111111111 && !inCurrentPanier(produit)' class="btn  btn-primary btn-small" ng-click="addProduct(produit)" tooltip="{{langue.l_ajout_liste}}" tooltip-placement="right" tooltip-popup-delay='500'>{{langue.l_ajouter}} <i class="icon-plus-sign-alt icon-white"></i> </button>
+							
+							<div ng-show='inCurrentPanier(produit)'>
+							<button style=' background: transparent;border: none !important;' ng-click="removeProduct(produit,1);"><i class="icon-minus-sign-alt"></i></button> 
+							<span style='font-size:120%;font-weight:bold;text-align:center;'>{{totalP=totalCurrentPanier(produit,id_panier)}}</span>
+							<button style=' background: transparent;border: none !important; vertical-align:center;' ng-click="addProduct(produit);"><i class="icon-plus-sign-alt icon-large"></i></button>
+							<p style="text-align:center;font-weight:bold;">{{(totalP*produit.s) | currencylg}}</p> 
+							</div>
+							<div ng-show='!inCurrentPanier(produit) && id_panier!=1111111111111'>
+								<span style='font-size:120%;font-weight:bold;text-align:center;'>Qte : {{totalP=totalCurrentPanier(produit,id_panier)}}</span>
+								</div>
+								<!--<button style=' background: transparent;border: none !important;' ng-click="removeProduct(produit,1);"><i class="icon-minus-sign-alt"></i></button> 		
+							<!--<button ng-show='!inCurrentPanier(produit)' class="btn  btn-primary btn-small" ng-click="addProduct(produit)" tooltip="{{langue.l_ajout_liste}}" tooltip-placement="right" tooltip-popup-delay='500'>{{langue.l_ajouter}} <i class="icon-plus-sign-alt icon-white"></i> </button>
+								commenté par Nail pour enlever les bouttons ajouter-->
+
+							<!--<div ng-show='inCurrentPanier(produit)'>
+								 {{langue.l_quantite_liste}}&nbsp;<input style="width:50px;color:black;" type="number" min=0 max=9999 ng-init="value=totalCurrentPanier(produit)" ng-model='value' ng-change="updateProduct(produit,value)" placeholder=""/> -->
+								<!--<button style=' background: transparent;border: none !important;' ng-click="removeProduct(produit,1);"><i class="icon-minus-sign-alt"></i></button>
+								<span style='font-size:120%;font-weight:bold;text-align:center;'>{{totalP=totalCurrentPanier(produit,id_panier)}}</span>
+								button style=' background: transparent;border: none !important; vertical-align:center;' ng-click="addProduct(produit);"><i class="icon-plus-sign-alt icon-large"></i></button>
+								<p style="text-align:center;font-weight:bold;">{{(totalP*produit.s) | currencylg}}</p> commenté par Nail-->							
+							</div>
+						</td>
+						<td style='width:90px;'>
+						<img src="images/correspondence.php?id_produit={{produit.i}}&lg={{langage}}&{{version}}" ng-show='id_panier==current_panier || id_panier == 1111111111111' class="img-polaroid floatLeft">
+						</td>
+						<td>
+									<button style='display:inline;:hover:text-color:red;' ng-show='id_panier==current_panier' class="close" ng-click='deleteProductPanier(produit)' tooltip-placement="bottom" tooltip-popup-delay='500' tooltip-html-unsafe="{{langue.l_click_remove}}">&times;</button>
+							<!-- <button class="btn btn-success btn-small" ng-click="go('/produit/'+produit.i)">?</button> -->
+						
+							<deals ng-show="produit.pv" deals="produit.b" regulier="produit.r" langue="langue"></deals>
+						
+							<p class='span4'><b>{{produit.x}} {{produit.z}}<br ng-show="produit.w!=''">{{produit.w|uppercase}}</b></p>		
+							<div style='float:right;display:inline;padding-right:5px;' tooltip='{{langue.l_regulier}} {{produit.r | currencylg}}'>
+								<span style='font-size:150%; font-weight:bold; color:red;'>{{produit.s | currencylg}}</span> chez {{produit.en}}		
+								<br><span ng-show="produit.q!=''" style='font-size:90%; font-weight:bold; color:black;'>/ {{produit.q}}</span>
+							</div>	
+							<br>	
+							<!-- <div ng-class="{produit_dispo:produit.nf}"> -->
+							<div class='span4'>{{langue.l_until}}: <b ng-show="produit.d>0">{{produit.d | datelg:'dd MMM yyyy'}}</b> <b ng-show="produit.d==0">-</b></div>
+							<br>
+
+							<!-- Done By Nail 2021-02-22 to remove the red message <div class='span4' ng-show='produit.nf' style='color:red'>{{langue.l_no_dispo}}</div>-->
+						<p>
+						<!-- <a href="#/produit/{{produit.i}}" style='style='font-size:150%;'> <i class='icon-info-sign' tooptip='{{langue.l_details}}' tooltip-placement="right" tooltip-popup-delay='500'></i>
+							</a>  <!-- <rating value=5 max="10"></rating> -->
+						</p>		
+						
+							
+						<p>
+							
+							
+						</p>
+						
+						<!-- <td>{{produit.d | datelg:'dd MMM yyyy'}}</td> -->
+						<!-- <a class="btn btn-small btn-info" href="#/produit/{{produit.i}}"> <i class="icon-info-sign"></i> {{langue.l_details}}</a>	-->
+					
+						</td>
+				   </tr>				
+			   </tbody>
+				</table>
+				<div ng-show='totalquantity(id_panier)!=0' style='padding-left: 70px;'>
+								<div id='deals3' style='text-align:center;padding-left:10px;top:0px;'>
+										<div style='font-size:70%;display:inline;'>{{langue.l_yousave}}</div>
+										<b style='font-size:100%'>{{savingCurrentPanier(id_panier)| currencylg}} *</b>
+								</div>
+				</div>
+				</div>
+		</div>
+  
+	   <div class="span3 visible-desktop panier " style="margin-left:5px;background-color:white" ng-cloak>
+		  <!--Sidebar content-->
+			<div class="pa-sidebar shadowE">
+			  <ul class="nav nav-list">
+			   <li><input type="text" style='margin-top: 10px;width:95%;' ng-model="searchText" autofocus="autofocus" placeholder="{{langue.l_search_liste}}" /></li>
+				<li ng-class="{ active :current_panier==id_panier}"><a href="#!/panier/{{current_panier}}" tooltip-popup-delay='1000'  tooltip-html-unsafe="{{current_panier | datelg:'dd MMM yyyy - hh:mm a'}}" tooltip-placement="bottom"><i class='icon-check'></i> {{langue.l_list}} | {{current_panier| datelg:'dd MMMM yyyy'}}</a></li>
+			  <!-- <li ng-show='totalquantity()>0'><a style='text-align:center;font-weight:bold;cursor: hand;cursor:pointer;' ng-click="go('/map')">{{langue.l_click_tour}} <img src='images/google_map_small.png'></img></a></li>	-->		 
+				
+				<li ng-repeat="panier in recommendations() | limitTo:PanierLimit()"  ng-class="{ active : panier==id_panier}" >     
+					<a ng-show='panier!=current_panier' style="background-color:red; color: white" href="#!/panier/{{panier}}" tooltip-popup-delay='500'  tooltip-html-unsafe="{{panier | datelg:'dd MMM yyyy - hh:mm a'}}<br>{{langue.l_click_list}}" tooltip-placement="bottom"><i  class=' icon-briefcase'></i>&nbsp;{{langue.l_nav_recommend}}</a>		
+				</li>
+				<br>
+				<!--<li>
+				<div style='text-align:center'><button class='btn btn-primary'  ng-click='newPanier()'>{{langue.l_effacer_liste}}</button></div>
+				</li>-->
+
+
+
+				<!-- NO ARCHIVE FOR NOW  -->
+				<li class="nav-header" id="paniertitle">{{langue.l_archive}}</li>
+				<script type="text/javascript">/*
+					if($scope.current_panier == "Recommended"){
+						document.getElementById("paniertitle").innerHTML = '{{langue.l_nav_recommend}}'
+					}*/
+				</script>
+				<!--Added by Nail 03/02/2020-->
+				<div class="checkbox" ng-show="get_paniers_count() > 1 " data-ng-init="toggleAll()">
+		          <input type="checkbox" name="currency" id="chk-all" ng-model="selectAll" ng-change="toggleAll()"><label>{{langue.l_menu_selectall}}</label>
+		        </div>
+				<li class = "checkbox checkbox-inline col-sm-4" ng-repeat="panier in truePaniers() | limitTo:PanierLimit()"  ng-class="{ active : panier==id_panier}" ng-show="panier !== current_panier_id()">     
+					<!--Edit by Nail 03/02/2020-->
+					<label ng-show="get_paniers_count() > 1"><input type="checkbox" ng-model="selected[$index]" ng-change="togglePanier($index)">
+					<a ng-show='panier!=current_panier' href="#!/panier/{{panier}}" tooltip-popup-delay='500'  tooltip-html-unsafe="{{panier | datelg:'dd MMM yyyy - hh:mm a'}}<br>{{langue.l_click_list}}" tooltip-placement="bottom"><i class=' icon-briefcase'></i>&nbsp;{{$index+1}} | {{panier | datelg:'dd MMMM yyyy'}}</a></label>					
+					<button style='display:inline;margin-top:-22px;margin-left:5px;' ng-show='panier==id_panier&&panier!=current_panier' class="close" ng-click='showDeleteDialog(panier)' tooltip-placement="bottom" tooltip-popup-delay='500' tooltip-html-unsafe="{{langue.l_click_remove}}">&times;</button>
+				</li>
+				<!--
+				<li ng-show="listPanier().length>5"><a href="#/panier">{{langue.l_show_more}}</a><li>  
+				<li>&nbsp;</li>-->
+				<br>
+				<li >
+					<button ng-show='hasMorePanierToShow()' class='btn' ng-click='showMorePanier()' >{{langue.l_show_more}}&nbsp;({{totalMorePanier()}})</button>
+					 <!--<button class='btn ' ng-click='goback()' ><i class="icon-reply icon-white"></i>&nbsp;{{langue.l_back}}</button>s-->
+				</li> 
+				<br>
+				<li style='text-align:center'>
+				<button class='btn btn-primary' ng-show="get_paniers_count() > 1" ng-click='logPanier()'>{{langue.l_recommend}}</button>
+				</li><br>
+				<li>&nbsp;</li>
+				 
+			  </ul>          
+			</div>  
+			
+			<br>
+			<div class="panel shadowE" ng-controller='PanierCtrl' >		
+				<div style='left:50%;top:50%;' >
+				<button ng-show='totalquantity()!=0' class='btn panier_button_gomap'   ng-click='go("/map");'>
+					<span style="text-align:center;font-size:110%;padding-top:10px;color: rgb(0, 136, 204);">{{langue.l_click_tour}}</span>
+					<img src='images/google-map.png'></img>
+				</button>		
+				<button ng-show='totalquantity()==0' class='btn panier_button_gomap'  ng-click="showNearbyStores()">
+					 <span style="text-align:center;font-size:110%;padding-top:10px;color: rgb(0, 136, 204);">{{langue.l_show_stores}}</span>																		
+					 <img src='images/google-map.png'></img>
+                                        <!-- <span class='btn_minimap_adr'></span> -->			
+				</button>
+				</div>
+			</div>
+		
+	<!------------------------------------------------------------------------------------>
+	<!-----------------------------  Lien vers l'application IOS  ------------------------>
+	<!------------------------------------------------------------------------------------>	
+	<div class="panel shadowE">		
+		<div style='left:50%;top:50%;' >
+			<a  ng-show='lg==false' href="http://localhost/app/app_fr.html" >
+				<img src="images/app_store_badge_fr.svg" style="width:100%">
+			</a>
+			<a ng-show='lg==true' href="http://localhost/app/app_en.html" >
+				<img src="images/apple_badge.svg" style="width:100%"></img>
+			</a>
+		</div>
+	</div>
+	
+			<center><div id='ads2'></div></center>
+			<div id='ads3' ></div>
+		
+		</div>
+	
